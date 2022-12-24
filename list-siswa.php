@@ -28,11 +28,12 @@
             <th>Agama</th>
             <th>Sekolah Asal</th>
             <th>Tindakan</th>
-</tr>
-</thead>
+        </tr>
+        </thead>
     <tbody> 
+
         <?php 
-        $sql = "SELECT * FROM calon_siswa";
+        $sql = "SELECT * FROM calon_siswa_baru";
         $query = mysqli_query($db, $sql);
 
         while($siswa = mysqli_fetch_array($query)) {
@@ -45,11 +46,14 @@
             echo "<td>".$siswa['agama']."</td>";
             echo "<td>".$siswa['sekolah_asal']."</td>";
             echo "<td>";
-            echo "<a href='form.edit.php?id=".$siswa[$id]."'>Edit</td>";
-            echo "<a href='hapus.php?id=".$siswa[$id]."'>Edit</td>";
+            echo "<a href='form.edit.php?id=".$siswa['id']."'>Edit</a> | ";
+            echo "<a href='hapus.php?id=".$siswa['id']."'>Edit</a>";
             echo "</td>";
             echo "<tr>";
         }
         ?>
+        </tbody>
+    </table>
+    <p>Total : <?php echo mysqli_num_rows($query); ?></p>
 </body>
 </html>
